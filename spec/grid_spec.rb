@@ -13,7 +13,6 @@ describe Grid do
   it 'Has a y value greater than 0' do
     expect(grid.heigth).to be > 0
   end
-
 end
 
 # 0 0 0 0 0 0 0 0 
