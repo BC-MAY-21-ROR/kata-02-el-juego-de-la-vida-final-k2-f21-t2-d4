@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rspec'
-require_relative '../cell.rb'
-require_relative '../grid.rb'
-require_relative '../neighbors.rb'
+require_relative '../cell'
+require_relative '../grid'
+require_relative '../neighbors'
 
 describe Grid do
-  grid = Grid.new(4,8)
+  grid = Grid.new(4, 8)
 
   it 'Has a x value greater than 0' do
     expect(grid.width).to be > 0
@@ -15,10 +17,10 @@ describe Grid do
   end
 end
 
-# 0 0 0 0 0 0 0 0 
-# 0 0 0 0 1 0 0 0 
-# 0 0 0 1 1 0 0 0 
-# 0 0 0 0 0 0 0 0 
+# 0 0 0 0 0 0 0 0
+# 0 0 0 0 1 0 0 0
+# 0 0 0 1 1 0 0 0
+# 0 0 0 0 0 0 0 0
 
 # 0 0 0 1 1 1 0 0 3
 # 0 0 1 3 2 2 0 0 8

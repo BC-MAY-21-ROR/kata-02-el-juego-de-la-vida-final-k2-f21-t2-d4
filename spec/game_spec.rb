@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'rspec'
-require_relative '../cell.rb'
-require_relative '../grid.rb'
-require_relative '../neighbors.rb'
-require_relative '../game.rb'
+require_relative '../cell'
+require_relative '../grid'
+require_relative '../neighbors'
+require_relative '../game'
 
 describe Game do
-  grid = Grid.new(4,8)
+  grid = Grid.new(4, 8)
   # [[0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 1, 0, 0, 0],[0, 0, 0, 1, 1, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0]]
   # Set all the cells with 0
   grid.cells.size.times do |x|
@@ -16,11 +18,11 @@ describe Game do
   grid.cells[1][4].status = 1
   grid.cells[2][3].status = 1
   grid.cells[2][4].status = 1
-  neighbors = Neighbors.new(4,8,grid.cells)
-  game = Game.new()
+  neighbors = Neighbors.new(4, 8, grid.cells)
+  game = Game.new
   game.base_grid = grid
   game.neighbors_grid = neighbors
-  
+
   it 'check ' do
     game.next_generation
     second_gen = []
@@ -30,6 +32,7 @@ describe Game do
         second_gen[x].push(grid.cells[x][y].status)
       end
     end
-    expect(second_gen).to eq ([[0, 0, 0,0,0,0,0,0],[0, 0, 0,1,1,0,0,0],[0, 0, 0,1,1,0,0,0],[0, 0, 0,0,0,0,0,0]])
-  end  
+    expect(second_gen).to eq([[0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 1, 1, 0, 0, 0], [0, 0, 0, 1, 1, 0, 0, 0],
+                              [0, 0, 0, 0, 0, 0, 0, 0]])
+  end
 end

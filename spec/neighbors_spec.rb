@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rspec'
-require_relative '../cell.rb'
-require_relative '../grid.rb'
-require_relative '../neighbors.rb'
+require_relative '../cell'
+require_relative '../grid'
+require_relative '../neighbors'
 
 describe Neighbors do
-  grid = Grid.new(4,8)
+  grid = Grid.new(4, 8)
   # [[0, 0, 0, 0, 0, 0, 0, 0],[0, 0, 0, 0, 1, 0, 0, 0],[0, 0, 0, 1, 1, 0, 0, 0],[0, 0, 0, 0, 0, 0, 0, 0]]
   # Set all the cells with 0
   grid.cells.size.times do |x|
@@ -15,19 +17,19 @@ describe Neighbors do
   grid.cells[1][4].status = 1
   grid.cells[2][3].status = 1
   grid.cells[2][4].status = 1
-  neighbors = Neighbors.new(4,8,grid.cells)
-  
+  neighbors = Neighbors.new(4, 8, grid.cells)
+
   it 'check score method' do
-      sum = 0
-      neighbors.score.flatten.each {|num| sum += num}
-      expect(sum).to eq 24
-  end  
+    sum = 0
+    neighbors.score.flatten.each { |num| sum += num }
+    expect(sum).to eq 24
+  end
 end
 
-# 0 0 0 0 0 0 0 0 
-# 0 0 0 0 1 0 0 0 
-# 0 0 0 1 1 0 0 0 
-# 0 0 0 0 0 0 0 0 
+# 0 0 0 0 0 0 0 0
+# 0 0 0 0 1 0 0 0
+# 0 0 0 1 1 0 0 0
+# 0 0 0 0 0 0 0 0
 
 # 0 0 0 1 1 1 0 0 3
 # 0 0 1 3 2 2 0 0 8
