@@ -1,5 +1,3 @@
-# require './grid.rb'
-
 class Neighbors
     def initialize(width, heigth, base_grid)
         @width = width

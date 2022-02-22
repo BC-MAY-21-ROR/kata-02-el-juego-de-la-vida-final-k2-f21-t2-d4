@@ -3,8 +3,7 @@ require './neighbors.rb'
 
 # Clase principal hace que esta wea funcione
 class Game
-  @base_grid
-  @neighbors_grid
+  attr_accessor :base_grid, :neighbors_grid
 
   def initialize()
     @gen = 0
@@ -26,15 +25,16 @@ class Game
   def main_loop()
     show_generation
     while(true)
-      gets.chomp.empty? ? show_generation : break
+      gets.chomp.empty? && @base_grid.extinction? ? show_generation : break
     end
+    show_generation
   end
 
   def show_generation
     puts "Generation: #{@gen += 1}"
     @base_grid.show
     next_generation
-    puts "Ingrese una letra para salir"
+    puts "Enter a letter to exit: "
   end
 
   def solicitarInfo
